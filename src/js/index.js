@@ -28,6 +28,27 @@ const calculator = {
   },
 };
 
-module.exports = { capitalise, reverseString, calculator };
+function caesarCipher(str, key) {
+  let tmp = Array.from(str)
+  let tmp2 = []
+  tmp.forEach(char => {
+    let tmp3;
+    // console.log(char.charCodeAt())
+    if (/^[a-z]+$/.test(char)){
+      tmp3 = (char.charCodeAt() + key)
+      tmp3 = ((tmp3 - 97) % 26) + 97 ;
+    }
+    else if(/^[A-Z]+$/.test(char)){
+      // console.log(char.charCodeAt())
+      tmp3 = (char.charCodeAt() + key)
+      tmp3 = ((tmp3 - 65) % 26) + 65 ;
+    }
+    else tmp3 = char.charCodeAt();
+    tmp2.push(String.fromCharCode(tmp3))
+  }); 
+  return tmp2.join('')
+}
 
-console.log(capitalise("jonathan"));
+module.exports = { capitalise, reverseString, calculator, caesarCipher };
+
+caesarCipher("XYZ", 3)
