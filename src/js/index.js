@@ -49,6 +49,15 @@ function caesarCipher(str, key) {
   return tmp2.join('')
 }
 
-module.exports = { capitalise, reverseString, calculator, caesarCipher };
+const analyseArrayObject = {analyseArray: function analyseArray(array){
+  let sum = array.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+  let average = sum / array.length;
+  let min = array.reduce((accumulator, currentValue) => Math.min(accumulator, currentValue));
+  let max = array.reduce((accumulator, currentValue) => Math.max(accumulator, currentValue)); 
+  let length = array.length
+  return {average, min, max, length} 
+}}
 
-caesarCipher("XYZ", 3)
+console.log(analyseArrayObject.analyseArray([1, 8, 3, 4, 2, 6]))
+
+module.exports = { capitalise, reverseString, calculator, caesarCipher, analyseArrayObject };
